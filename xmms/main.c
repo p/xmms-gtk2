@@ -146,8 +146,8 @@ GtkItemFactoryEntry mainwin_options_menu_entries[] =
 	{N_("/Easy Move"), "<control>E", mainwin_options_menu_callback, MAINWIN_OPT_EASY_MOVE, "<ToggleItem>"},
 };
 
-static gint mainwin_options_menu_entries_num = 
-	sizeof(mainwin_options_menu_entries) / 
+static gint mainwin_options_menu_entries_num =
+	sizeof(mainwin_options_menu_entries) /
 	sizeof(mainwin_options_menu_entries[0]);
 
 void mainwin_songname_menu_callback(gpointer cb_data, guint action, GtkWidget * w);
@@ -165,8 +165,8 @@ GtkItemFactoryEntry mainwin_songname_menu_entries[] =
 	{N_("/Autoscroll Song Name"), NULL, mainwin_songname_menu_callback, MAINWIN_SONGNAME_SCROLL, "<ToggleItem>"},
 };
 
-static gint mainwin_songname_menu_entries_num = 
-	sizeof(mainwin_songname_menu_entries) / 
+static gint mainwin_songname_menu_entries_num =
+	sizeof(mainwin_songname_menu_entries) /
 	sizeof(mainwin_songname_menu_entries[0]);
 
 void mainwin_vis_menu_callback(gpointer cb_data, guint action, GtkWidget * w);
@@ -226,8 +226,8 @@ GtkItemFactoryEntry mainwin_vis_menu_entries[] =
 	{N_("/Visualization plugins"), "<control>V", mainwin_vis_menu_callback, MAINWIN_VIS_PLUGINS, "<Item>"}
 };
 
-static gint mainwin_vis_menu_entries_num = 
-	sizeof(mainwin_vis_menu_entries) / 
+static gint mainwin_vis_menu_entries_num =
+	sizeof(mainwin_vis_menu_entries) /
 	sizeof(mainwin_vis_menu_entries[0]);
 
 /*
@@ -272,7 +272,7 @@ GtkItemFactoryEntry mainwin_general_menu_entries[] =
 	{N_("/About XMMS"), NULL, mainwin_general_menu_callback, MAINWIN_GENERAL_ABOUT, "<Item>"},
 	{N_("/-"), NULL, NULL, 0, "<Separator>"},
 	{N_("/Play File"), "L", mainwin_general_menu_callback, MAINWIN_GENERAL_PLAYFILE, "<Item>"},
-	{N_("/Play Directory"), "<shift>L", mainwin_general_menu_callback, MAINWIN_GENERAL_PLAYDIRECTORY, "<Item>"},	
+	{N_("/Play Directory"), "<shift>L", mainwin_general_menu_callback, MAINWIN_GENERAL_PLAYDIRECTORY, "<Item>"},
 	{N_("/Play Location"), "<control>L", mainwin_general_menu_callback, MAINWIN_GENERAL_PLAYLOCATION, "<Item>"},
 	{N_("/View File Info"), "<control>3" , mainwin_general_menu_callback, MAINWIN_GENERAL_FILEINFO, "<Item>"},
 	{N_("/-"), NULL, NULL, 0, "<Separator>"},
@@ -303,8 +303,8 @@ GtkItemFactoryEntry mainwin_general_menu_entries[] =
 	{N_("/Exit"), "<control>Q", mainwin_general_menu_callback, MAINWIN_GENERAL_EXIT, "<Item>"}
 };
 
-static const int mainwin_general_menu_entries_num = 
-	sizeof(mainwin_general_menu_entries) / 
+static const int mainwin_general_menu_entries_num =
+	sizeof(mainwin_general_menu_entries) /
 	sizeof(mainwin_general_menu_entries[0]);
 
 static void make_xmms_dir(void)
@@ -378,7 +378,7 @@ static void read_config(void)
 	cfg.disabled_iplugins = NULL;
 	cfg.enabled_gplugins = NULL;
 	cfg.mouse_change = 8;
-	
+
 	cfg.gentitle_format = NULL;
 
 	filename = g_strconcat(g_get_home_dir(), "/.xmms/config", NULL);
@@ -445,7 +445,7 @@ static void read_config(void)
 		for (i = 0; i < 10; i++)
 		{
 			gchar eqtext[18];
-			
+
 			sprintf(eqtext, "equalizer_band%d", i);
 			xmms_cfg_read_float(cfgfile, "xmms", eqtext, &cfg.equalizer_bands[i]);
 		}
@@ -472,14 +472,14 @@ static void read_config(void)
 			for(i = 1; i <= length; i++)
 			{
 				gchar str[19], *temp;
-				
+
 				sprintf(str, "url_history%d", i);
 				if (xmms_cfg_read_string(cfgfile, "xmms", str, &temp))
 					cfg.url_history = g_list_append(cfg.url_history, temp);
 			}
 		}
 		xmms_cfg_read_string(cfgfile, "xmms", "generic_title_format", &cfg.gentitle_format);
-		
+
 		xmms_cfg_free(cfgfile);
 	}
 
@@ -661,7 +661,7 @@ void save_config(void)
 	}
 	else
 		xmms_cfg_remove_key(cfgfile, "xmms", "enabled_eplugins");
-	
+
 	xmms_cfg_write_string(cfgfile, "xmms", "disabled_iplugins", cfg.disabled_iplugins);
 	if (cfg.filesel_path)
 		xmms_cfg_write_string(cfgfile, "xmms", "filesel_path", cfg.filesel_path);
@@ -675,7 +675,7 @@ void save_config(void)
 		g_free(str);
 	}
 	xmms_cfg_write_string(cfgfile, "xmms", "generic_title_format", cfg.gentitle_format);
-	
+
 	xmms_cfg_write_file(cfgfile, filename);
 	xmms_cfg_free(cfgfile);
 
@@ -700,10 +700,10 @@ void mainwin_set_shape_mask(void)
 {
 	if (!cfg.player_visible || cfg.show_wm_decorations)
 		return;
-		
+
 	gtk_widget_shape_combine_mask(mainwin, skin_get_mask(SKIN_MASK_MAIN, cfg.doublesize, cfg.player_shaded), 0, 0);
 }
-	
+
 
 void set_doublesize(gboolean ds)
 {
@@ -724,7 +724,7 @@ void set_doublesize(gboolean ds)
 	}
 	else
 	{
-		dock_resize(dock_window_list, mainwin, 275, height);		
+		dock_resize(dock_window_list, mainwin, 275, height);
 		gdk_window_set_back_pixmap(mainwin->window, mainwin_bg, 0);
 	}
 	draw_main_window(TRUE);
@@ -1268,7 +1268,7 @@ void mainwin_press(GtkWidget * widget, GdkEventButton * event, gpointer callback
 		int d = cfg.mouse_change * 1000;
 		if (event->button == 6)
 			d *= -1;
-		
+
 		input_seek(CLAMP(input_get_time() + d, 0,
 				 playlist_get_current_length()) / 1000);
 	}
@@ -1400,7 +1400,7 @@ void mainwin_focus_out(GtkWidget * widget, GdkEventButton * event, gpointer call
 
 gboolean mainwin_keypress(GtkWidget * w, GdkEventKey * event, gpointer data)
 {
-	
+
 	switch(event->keyval)
 	{
 	case GDK_Up:
@@ -1423,9 +1423,9 @@ gboolean mainwin_keypress(GtkWidget * w, GdkEventKey * event, gpointer data)
 		break;
 	default:
 	     break;
-			
+
 	}
-			
+
 	return TRUE;
 }
 
@@ -1588,7 +1588,7 @@ static gboolean mainwin_jump_to_file_entry_keypress_cb(GtkWidget * widget, GdkEv
 
 	if (!event)
 		return FALSE;
-	
+
 	switch (event->keyval)
 	{
 		case GDK_Return:
@@ -1652,7 +1652,7 @@ static void mainwin_jump_to_file_edit_real(GtkWidget * widget, gpointer userdata
 	char *words[20];
 	int nw = 0, i;
 	char* ptr;
-	
+
 	PL_LOCK();
 	playlist = get_playlist();
 	key = g_strdup(gtk_entry_get_text(GTK_ENTRY(widget)));
@@ -1667,7 +1667,7 @@ static void mainwin_jump_to_file_edit_real(GtkWidget * widget, gpointer userdata
 
 	/* lowercase the key string */
 	g_strdown(key);
-	
+
 	/* Chop the key string into ' '-separeted key words */
 	for (ptr = key; nw < 20; ptr = strchr(ptr, ' '))
 	{
@@ -1680,14 +1680,14 @@ static void mainwin_jump_to_file_edit_real(GtkWidget * widget, gpointer userdata
 		        	*ptr = '\0';
 				ptr++;
 			}
-			words[nw++] = ptr;			
+			words[nw++] = ptr;
 		}
 		else
 		{
 			words[nw++] = ptr;
 		}
 	}
-	
+
 	gtk_clist_clear(clist);
 
 	while (playlist)
@@ -1704,7 +1704,7 @@ static void mainwin_jump_to_file_edit_real(GtkWidget * widget, gpointer userdata
 			desc_buf[1] = strrchr(filename, '/') + 1;
 		else
 			desc_buf[1] = filename;
-		
+
 		/*
 		 * Optimize a little since the delay when beginning to
 		 * type is annoying.  We'll drop through if the key is
@@ -1720,14 +1720,14 @@ static void mainwin_jump_to_file_edit_real(GtkWidget * widget, gpointer userdata
 		 * constructing them everytime. This'd take memory, so
 		 * I won't do it this time.
 		 */
-		   
+
 		if (nw == 0 ||                           /* zero char key */
 		    (nw == 1 && words[0][0] == '\0') ||  /* zero char key */
 		    (nw == 1 && strlen(words[0]) == 1 && /* one char key */
 		     ((title && (strchr(title, tolower(words[0][0])) ||
 		      strchr(title, toupper(words[0][0])))) ||
-		      strchr(filename, tolower(words[0][0])) || 
-		      strchr(filename, toupper(words[0][0]))))) 
+		      strchr(filename, tolower(words[0][0])) ||
+		      strchr(filename, toupper(words[0][0])))))
 			match = 1;
 		else if (nw == 1 && strlen(words[0]) == 1)
 			match = 0;
@@ -1793,9 +1793,9 @@ static void mainwin_jump_to_file_edit_real(GtkWidget * widget, gpointer userdata
 	if (clist->selection)
 		clist->focus_row = GPOINTER_TO_INT(clist->selection->data);
 }
- 
+
 static void mainwin_jump_to_file_edit_cb(GtkWidget * widget, gpointer userdata)
-{ 
+{
 	GtkCList* clist = GTK_CLIST(userdata);
 	gtk_clist_freeze(clist);
 	mainwin_jump_to_file_edit_real(widget, userdata);
@@ -1808,10 +1808,10 @@ static void mainwin_jump_to_file_edit_cb(GtkWidget * widget, gpointer userdata)
 		gtk_clist_select_row(clist, 0, 0);
 		gtk_clist_thaw(clist);
 	}
-} 
- 
+}
+
 static void mainwin_jump_to_file_clist_refresh(GtkWidget * widget, gpointer userdata)
-{ 
+{
 	gfloat adjustment;
 	GtkCList* clist = GTK_CLIST(userdata);
 	gtk_clist_freeze(clist);
@@ -1819,20 +1819,20 @@ static void mainwin_jump_to_file_clist_refresh(GtkWidget * widget, gpointer user
 	mainwin_jump_to_file_edit_real(widget, userdata);
 	gtk_adjustment_set_value(clist->vadjustment, adjustment);
 	gtk_clist_thaw(clist);
-} 
- 
+}
+
 static void mainwin_jump_to_file_queue_toggle(gint pos, gpointer userdata)
-{ 
+{
 	GtkWidget **data = (GtkWidget **) userdata;
 	GtkEditable *edit = GTK_EDITABLE(data[0]);
 	GtkCList *clist = GTK_CLIST(data[1]);
 	gpointer qlist = data[2];
- 
+
 	playlist_queue_position(pos);
 	if (strlen(gtk_entry_get_text(GTK_ENTRY(edit))) > 0) {
 		/*
-		 * XXX: It might be a good idea to add a setting such as 
-		 *		cfg.reset_search_on_queue or something and check for it here. 
+		 * XXX: It might be a good idea to add a setting such as
+		 *		cfg.reset_search_on_queue or something and check for it here.
 		 */
 		gtk_editable_delete_text(GTK_EDITABLE(edit), 0, -1);
 	} else {
@@ -1840,30 +1840,30 @@ static void mainwin_jump_to_file_queue_toggle(gint pos, gpointer userdata)
 		if (qlist != NULL)
 			mainwin_queue_manager_queue_refresh(GTK_WIDGET(edit), GTK_CLIST(qlist));
 	}
-} 
- 
+}
+
 static void mainwin_jump_to_file_queue_cb(GtkButton * widget, gpointer userdata)
 {
 	GtkWidget **data = (GtkWidget **) userdata;
 	GtkCList *clist = GTK_CLIST(data[1]);
 	int *pos;
- 
+
 	if (clist->selection)
 	{
 		int lpos = GPOINTER_TO_INT(clist->selection->data);
 		pos = gtk_clist_get_row_data(clist, lpos);
 		mainwin_jump_to_file_queue_toggle(*pos, userdata);
-	}	
+	}
 	mainwin_jtf_set_qbtn_label(clist, GTK_WIDGET(widget));
-} 
+}
 
 static void mainwin_jump_to_file_cleanup(GtkWidget *window, gpointer userdata)
 {
 	gtk_widget_destroyed(window, &window);
-	/* Free memory allocated for edit_clist_qlist_and_queue 
+	/* Free memory allocated for edit_clist_qlist_and_queue
 	   in mainwin_jump_to_file  */
 	g_free(userdata);
-} 
+}
 
 static void mainwin_jump_to_file(void)
 {
@@ -1871,7 +1871,7 @@ static void mainwin_jump_to_file(void)
 	char *title[2];
 	/*
 	 * This little bugger is because I need all these widgets in some of
-	 * the signal handlers. It will be freed when the window 
+	 * the signal handlers. It will be freed when the window
 	 * is destroyed. Better solutions are very much welcomed.
 	 */
 	GtkWidget **edit_clist_qlist_and_queue = g_malloc(sizeof(GtkWidget *)*4);
@@ -1920,8 +1920,8 @@ static void mainwin_jump_to_file(void)
 			   GTK_SIGNAL_FUNC(mainwin_jump_to_file_entry_keypress_cb), clist);
 	gtk_box_pack_start(GTK_BOX(hbox), edit, TRUE, TRUE, 3);
 	gtk_widget_show(edit);
-	
-	/* looks messy putting them down here, but edit isn't 
+
+	/* looks messy putting them down here, but edit isn't
 	   defined until just above */
 	edit_clist_qlist_and_queue[0] = edit;
 	edit_clist_qlist_and_queue[1] = clist;
@@ -1973,11 +1973,11 @@ static void mainwin_jump_to_file(void)
 	mainwin_jump_to_file_edit_cb(GTK_WIDGET(edit), clist);
 
 	gtk_clist_select_row(GTK_CLIST(clist), get_playlist_position(), 0);
-	
+
 	gtk_window_set_modal(GTK_WINDOW(mainwin_jtf), 1);
 	gtk_widget_show(mainwin_jtf);
 	gtk_widget_grab_focus(edit);
- 
+
 	/* Only do this if there is a selection, or else we get a segfault */
 	if (GTK_CLIST(clist)->selection) {
 		gtk_clist_moveto(GTK_CLIST(clist),
@@ -1998,8 +1998,8 @@ static void mainwin_queue_manager_select_row_cb(GtkCList * widget, gint row, gin
 		mainwin_jump_to_file_queue_toggle(*pos, cb_data);
 	}
 	mainwin_jtf_set_qbtn_label(clist, GTK_WIDGET(queue));
-} 
- 
+}
+
 static gboolean mainwin_queue_manager_entry_keypress_cb(GtkWidget * widget, GdkEventKey * event, gpointer userdata)
 {
 	GtkWidget **data = (GtkWidget **) userdata;
@@ -2008,7 +2008,7 @@ static gboolean mainwin_queue_manager_entry_keypress_cb(GtkWidget * widget, GdkE
 
 	if (!event)
 		return FALSE;
-	
+
 	switch (event->keyval)
 	{
 		case GDK_Return:
@@ -2044,8 +2044,8 @@ static gboolean mainwin_queue_manager_entry_keypress_cb(GtkWidget * widget, GdkE
 					     "key_press_event");
 
 	return TRUE;
-} 
- 
+}
+
 static void mainwin_queue_manager_queue_refresh(GtkWidget * widget, gpointer userdata)
 {
 	GtkCList* qlist = GTK_CLIST(userdata);
@@ -2059,11 +2059,11 @@ static void mainwin_queue_manager_queue_refresh(GtkWidget * widget, gpointer use
 	gtk_clist_freeze(qlist);
 
 	PL_LOCK();
-	
+
 	adjustment = qlist->vadjustment->value;
 
 	tmp = gtk_clist_get_row_data(qlist, qlist->focus_row);
-	if (tmp != NULL) 
+	if (tmp != NULL)
 		prev_focus = playlist_get_playlist_position_from_playqueue_position(*tmp);
 
 	gtk_clist_clear(qlist);
@@ -2090,14 +2090,14 @@ static void mainwin_queue_manager_queue_refresh(GtkWidget * widget, gpointer use
 		*data_buf = pos;
 		gtk_clist_set_row_data_full(qlist, row, data_buf, g_free);
 
-		if (prev_focus != -1 && prev_focus == playlist_get_playlist_position_from_playqueue_position(pos)) 
+		if (prev_focus != -1 && prev_focus == playlist_get_playlist_position_from_playqueue_position(pos))
 			row_to_select = row;
 
 		++pos;
-	} 
- 
-	PL_UNLOCK(); 
-	
+	}
+
+	PL_UNLOCK();
+
 	if (row_to_select != -1) {
 		gtk_clist_select_row(qlist, row_to_select, 0);
 		qlist->focus_row = GPOINTER_TO_INT(qlist->selection->data);
@@ -2107,8 +2107,8 @@ static void mainwin_queue_manager_queue_refresh(GtkWidget * widget, gpointer use
 	if (adjustment + qlist->vadjustment->page_size > qlist->vadjustment->upper)
     	adjustment = qlist->vadjustment->upper - qlist->vadjustment->page_size;
 	gtk_adjustment_set_value(qlist->vadjustment, adjustment);
-} 
- 
+}
+
 static void mainwin_queue_manager_reorder_real(GtkCList *widget, gint arg1, gint arg2, gpointer userdata) {
 	GtkWidget **data = (GtkWidget **) userdata;
 	GtkEditable *edit = GTK_EDITABLE(data[0]);
@@ -2123,13 +2123,13 @@ static void mainwin_queue_manager_reorder_real(GtkCList *widget, gint arg1, gint
 	mainwin_queue_manager_queue_refresh(GTK_WIDGET(widget), qlist);
 	/* refresh clist */
 	mainwin_jump_to_file_clist_refresh(GTK_WIDGET(edit),clist);
-} 
- 
+}
+
 static void mainwin_queue_manager_reorder(GtkCList *widget, gint arg1, gint arg2, gpointer userdata) {
 	mainwin_queue_manager_reorder_real(widget, arg1, arg2, userdata);
 	/* stop the signal to prevent it from reordering our newly reread queue. */
 	gtk_signal_emit_stop_by_name(GTK_OBJECT(widget), "row-move");
-} 
+}
 
 static void mainwin_queue_manager_move_up_cb(GtkWidget *widget, gpointer userdata)
 {
@@ -2140,20 +2140,20 @@ static void mainwin_queue_manager_move_up_cb(GtkWidget *widget, gpointer userdat
 		int *pos = gtk_clist_get_row_data(qlist,qlist->focus_row);
 		if (pos != NULL && *pos > 0)
 			mainwin_queue_manager_reorder_real(qlist, *pos, (*pos)-1, userdata);
-	}	
-} 
+	}
+}
 
 static void mainwin_queue_manager_move_down_cb(GtkWidget *widget, gpointer userdata)
 {
 	GtkWidget **data = (GtkWidget **) userdata;
 	GtkCList *qlist = GTK_CLIST(data[2]);
-	
+
 	if (qlist->selection) {
 		int *pos = gtk_clist_get_row_data(qlist,qlist->focus_row);
 		if (pos != NULL && *pos < get_playlist_queue_length()-1)
 			mainwin_queue_manager_reorder_real(qlist, *pos, (*pos)+1, userdata);
-	}	
-} 
+	}
+}
 
 static void mainwin_queue_manager_remove_cb(GtkWidget *widget, gpointer userdata)
 {
@@ -2165,13 +2165,13 @@ static void mainwin_queue_manager_remove_cb(GtkWidget *widget, gpointer userdata
 		int pos = playlist_get_playlist_position_from_playqueue_position(*tmp);
 		mainwin_jump_to_file_queue_toggle(pos, userdata);
 	}
-} 
+}
 
 static void mainwin_queue_manager_keypress_cb(GtkWidget * widget, GdkEventKey * event, gpointer userdata)
 {
 	if (event && (event->keyval == GDK_Escape))
 		gtk_widget_destroy(mainwin_qm);
-} 
+}
 
 static void mainwin_queue_manager_qlist_keypress_cb(GtkWidget * widget, GdkEventKey * event, gpointer userdata)
 {
@@ -2184,8 +2184,8 @@ static void mainwin_queue_manager_qlist_keypress_cb(GtkWidget * widget, GdkEvent
 	else if (event && (event->keyval == GDK_Delete)) {
 		mainwin_queue_manager_remove_cb(widget, userdata);
 		gtk_signal_emit_stop_by_name(GTK_OBJECT(widget), "key_press_event");
-	}	
-} 
+	}
+}
 
 void mainwin_queue_manager(void)
 {
@@ -2193,7 +2193,7 @@ void mainwin_queue_manager(void)
 	char *title[2];
 	/*
 	 * This little bugger is because I need all these widgets in some of
-	 * the signal handlers. It will be freed when the window 
+	 * the signal handlers. It will be freed when the window
 	 * is destroyed. Better solutions are very much welcomed.
 	 */
 	GtkWidget **edit_clist_qlist_and_queue = g_malloc(sizeof(GtkWidget *)*4);
@@ -2238,7 +2238,7 @@ void mainwin_queue_manager(void)
 	gtk_signal_connect(GTK_OBJECT(qlist), "key_press_event",
 			   GTK_SIGNAL_FUNC(mainwin_queue_manager_qlist_keypress_cb),
 			   edit_clist_qlist_and_queue);
-	gtk_signal_connect(GTK_OBJECT(qlist), "row-move", 
+	gtk_signal_connect(GTK_OBJECT(qlist), "row-move",
 			GTK_SIGNAL_FUNC(mainwin_queue_manager_reorder), edit_clist_qlist_and_queue);
 	gtk_clist_set_reorderable(GTK_CLIST(qlist), TRUE);
 	gtk_container_add(GTK_CONTAINER(qscrollwin), qlist);
@@ -2277,7 +2277,7 @@ void mainwin_queue_manager(void)
 			   GTK_SIGNAL_FUNC(mainwin_queue_manager_remove_cb), edit_clist_qlist_and_queue);
 	GTK_WIDGET_SET_FLAGS(remove, GTK_CAN_DEFAULT);
 	gtk_widget_show(remove);
-	
+
 	gtk_widget_show(qbox);
 
 	clist = gtk_clist_new_with_titles(2, title);
@@ -2309,8 +2309,8 @@ void mainwin_queue_manager(void)
 			   GTK_SIGNAL_FUNC(mainwin_queue_manager_entry_keypress_cb), edit_clist_qlist_and_queue);
 	gtk_box_pack_start(GTK_BOX(hbox), edit, TRUE, TRUE, 3);
 	gtk_widget_show(edit);
-	
-	/* looks messy putting them down here, but edit isn't 
+
+	/* looks messy putting them down here, but edit isn't
 	   defined until just above */
 	edit_clist_qlist_and_queue[0] = edit;
 	edit_clist_qlist_and_queue[1] = clist;
@@ -2357,19 +2357,19 @@ void mainwin_queue_manager(void)
 	mainwin_queue_manager_queue_refresh(GTK_WIDGET(clist), qlist);
 
 	gtk_clist_select_row(GTK_CLIST(clist), get_playlist_position(), 0);
-	
+
 	gtk_window_set_modal(GTK_WINDOW(mainwin_qm), 1);
 	gtk_widget_show(mainwin_qm);
 	gtk_widget_grab_focus(edit);
 
 	/* Only do this if there is a selection, or else we get a segfault */
 	if (GTK_CLIST(clist)->selection) {
-		gtk_clist_moveto(GTK_CLIST(clist), 
-			 GPOINTER_TO_INT(GTK_CLIST(clist)->selection->data), 
+		gtk_clist_moveto(GTK_CLIST(clist),
+			 GPOINTER_TO_INT(GTK_CLIST(clist)->selection->data),
 			 0, 0.5, 0.0);
 		GTK_CLIST(clist)->focus_row = GPOINTER_TO_INT(GTK_CLIST(clist)->selection->data);
 	}
-} 
+}
 
 static gboolean mainwin_configure(GtkWidget * window, GdkEventConfigure *event, gpointer data)
 {
@@ -2379,7 +2379,7 @@ static gboolean mainwin_configure(GtkWidget * window, GdkEventConfigure *event, 
 	if (cfg.show_wm_decorations)
 		gdk_window_get_root_origin(window->window,
 					   &cfg.player_x, &cfg.player_y);
-	else		
+	else
 		gdk_window_get_deskrelative_origin(window->window,
 						   &cfg.player_x, &cfg.player_y);
 	return FALSE;
@@ -2406,7 +2406,7 @@ gint mainwin_client_event(GtkWidget *w,GdkEventClient *event, gpointer data)
 		equalizerwin_set_back_pixmap();
 		playlistwin_set_back_pixmap();
 		return TRUE;
-		
+
 	}
 	return FALSE;
 }
@@ -2478,7 +2478,7 @@ void mainwin_url_ok_clicked(GtkWidget * w, GtkWidget * entry)
 void mainwin_url_enqueue_clicked(GtkWidget * w, GtkWidget * entry)
 {
 	gchar *text;
-	
+
 	text = gtk_entry_get_text(GTK_ENTRY(entry));
 	if (text && *text)
 		playlist_add_url_string(text);
@@ -2665,7 +2665,7 @@ void mainwin_adjust_volume_release(void)
 void mainwin_adjust_balance_motion(gint b)
 {
 	char *tmp;
-	gint v, pvl, pvr; 
+	gint v, pvl, pvr;
 
 	setting_volume = TRUE;
 	balance = b;
@@ -2748,7 +2748,7 @@ void mainwin_set_volume_diff(gint diff)
 	equalizerwin_set_volume_slider(vol);
 	read_volume(VOLUME_SET);
 }
-	
+
 void mainwin_set_balance_diff(gint diff)
 {
 	gint b;
@@ -2759,7 +2759,7 @@ void mainwin_set_balance_diff(gint diff)
 	equalizerwin_set_balance_slider(b);
 	read_volume(VOLUME_SET);
 }
-	
+
 void mainwin_show(gboolean show)
 {
 	GtkWidget *widget = gtk_item_factory_get_widget(mainwin_general_menu, "/Main Window");
@@ -3194,7 +3194,7 @@ void read_volume(gint when)
 		else if (pvr != vr || pvl != vl)
 		{
 			gchar *tmp;
-			
+
 			v = MAX(vl,vr);
 			if(vl > vr)
 				b = (gint) rint(((gdouble) vr / vl) * 100) - 100;
@@ -3443,7 +3443,7 @@ static void mainwin_create_gtk(void)
 
 	mainwin_set_icon(mainwin);
 	util_set_cursor(mainwin);
-	
+
 	if (cfg.doublesize)
 		gtk_widget_set_usize(mainwin, 550, cfg.player_shaded ? 28 : 232);
 	else
@@ -3496,7 +3496,7 @@ void mainwin_recreate(void)
 	mainwin_set_shape_mask();
 	draw_main_window(TRUE);
 }
-									    
+
 
 void set_timer_mode(TimerMode mode)
 {
@@ -3532,7 +3532,7 @@ static void output_failed(void)
 	}
 	else
 		gdk_window_raise(infobox->window);
-	
+
 }
 
 gint idle_func(gpointer data)
@@ -3572,13 +3572,13 @@ gint idle_func(gpointer data)
 				if (!mainwin_sposition->hs_pressed)
 				{
 					char temp[3];
-					
+
 					sprintf(temp,"%2.2d", timeleft / 60);
 					textbox_set_text(mainwin_stime_min, temp);
 					sprintf(temp,"%2.2d", timeleft % 60);
 					textbox_set_text(mainwin_stime_sec, temp);
 				}
-				
+
 				playlistwin_set_time(timeleft*1000, 0, TIMER_ELAPSED);
 			}
 
@@ -3627,7 +3627,7 @@ gint idle_func(gpointer data)
 				stime_prefix = ' ';
 			}
 			t /= 1000;
-			
+
 			if (!cfg.timer_minutes_only)
 			{
 				/*
@@ -3931,7 +3931,7 @@ void handle_cmd_line_options(struct cmdlineopt *opt, gboolean remote)
 		else
 			opt->session = 0;
 	}
-	
+
 	if (opt->filenames != NULL)
 	{
 		GList *node;
@@ -3939,7 +3939,7 @@ void handle_cmd_line_options(struct cmdlineopt *opt, gboolean remote)
 
 		if ((opt->enqueue && opt->play) || (opt->queue && !opt->play))
 			pos = xmms_remote_get_playlist_length (opt->session);
-		if (!opt->enqueue && !opt->queue) 
+		if (!opt->enqueue && !opt->queue)
 			xmms_remote_playlist_clear(opt->session);
 		xmms_remote_playlist_add(opt->session, opt->filenames);
 		node = opt->filenames;
@@ -4072,7 +4072,7 @@ static gboolean pposition_configure(GtkWidget *w, GdkEventConfigure *event, gpoi
 }
 
 void check_pposition(void)
-{	
+{
 	GtkWidget *window;
 	GdkBitmap *mask;
 	GdkGC *gc;
@@ -4084,17 +4084,17 @@ void check_pposition(void)
 			   GTK_SIGNAL_FUNC(pposition_configure), NULL);
 	gtk_widget_set_uposition(window, 0, 0);
 	gtk_widget_realize(window);
-	
+
 	gtk_widget_set_usize(window, 1, 1);
 	gdk_window_set_decorations(window->window, 0);
-	
+
 	mask = gdk_pixmap_new(window->window, 1, 1, 1);
 	gc = gdk_gc_new(mask);
 	pattern.pixel = 0;
 	gdk_gc_set_foreground(gc, &pattern);
 	gdk_draw_rectangle(mask, gc, TRUE, 0, 0, 1, 1);
 	gdk_gc_destroy(gc);
-	gtk_widget_shape_combine_mask(window, mask, 0, 0);	
+	gtk_widget_shape_combine_mask(window, mask, 0, 0);
 
 	gtk_widget_show(window);
 
@@ -4114,7 +4114,7 @@ static GdkFilterReturn save_yourself_filter(GdkXEvent *xevent, GdkEvent *event, 
 	if (((XEvent*)xevent)->type == ClientMessage)
 	{
 		XClientMessageEvent *cme = (XClientMessageEvent*) xevent;
-		if (cme->message_type == protocols && 
+		if (cme->message_type == protocols &&
 		    (Atom) cme->data.l[0] == save_yourself)
 		{
 			save_config();
@@ -4124,7 +4124,7 @@ static GdkFilterReturn save_yourself_filter(GdkXEvent *xevent, GdkEvent *event, 
 			return GDK_FILTER_REMOVE;
 		}
 	}
-	
+
 	return GDK_FILTER_CONTINUE;
 }
 #endif
@@ -4132,12 +4132,12 @@ static GdkFilterReturn save_yourself_filter(GdkXEvent *xevent, GdkEvent *event, 
 static void enable_x11r5_session_management(int argc, char **argv)
 {
 	/*
-	 * X11R5 Session Management 
+	 * X11R5 Session Management
 	 *
 	 * Most of xmms' options does not make sense when we are
 	 * restarted, so we drop them all.
 	 */
-	
+
 	/* GdkAtom save_yourself; */
 	/* Atom *temp, *temp2; */
 	/* int i, n; */
@@ -4145,7 +4145,7 @@ static void enable_x11r5_session_management(int argc, char **argv)
 	restart_argc = 1;
 	restart_argv = g_malloc(sizeof (char *));
 	restart_argv[0] = g_strdup(argv[0]);
-	
+
 	XSetCommand(GDK_DISPLAY(), GDK_WINDOW_XWINDOW(mainwin->window),
 		    restart_argv, restart_argc);
 #if 0
@@ -4245,7 +4245,7 @@ int main(int argc, char **argv)
 
 	if (options.quit)
 		return 0;
-	
+
 	gdk_rgb_init();
 	gtk_widget_set_default_colormap(gdk_rgb_get_cmap());
 	gtk_widget_set_default_visual(gdk_rgb_get_visual());
@@ -4257,7 +4257,7 @@ int main(int argc, char **argv)
 		       gtk_major_version, gtk_minor_version, gtk_micro_version, "1.2.2");
 		exit(0);
 	}
-	
+
 	check_wm_hints();
 	check_pposition();
 	mainwin_accel = gtk_accel_group_new();
@@ -4272,7 +4272,7 @@ int main(int argc, char **argv)
 	g_free(filename);
 
 	/* Plugins might start threads that can call gtk */
-	GDK_THREADS_ENTER();        
+	GDK_THREADS_ENTER();
 
 	init_plugins();
 
@@ -4291,14 +4291,14 @@ int main(int argc, char **argv)
 	playlist_set_position(cfg.playlist_position);
 	GDK_THREADS_LEAVE();
 	start_ctrlsocket();
-	handle_cmd_line_options(&options, FALSE); 
+	handle_cmd_line_options(&options, FALSE);
 	GDK_THREADS_ENTER();
 	mainwin_set_info_text();
 
 	gtk_widget_show(mainwin);
 	if (pposition_broken && cfg.player_x != -1 && cfg.save_window_position)
 		dock_set_uposition(mainwin, cfg.player_x, cfg.player_y);
-	
+
 	if (!cfg.player_visible && (cfg.playlist_visible || cfg.equalizer_visible))
 		mainwin_real_hide();
 	else
@@ -4306,11 +4306,11 @@ int main(int argc, char **argv)
 	if (cfg.playlist_visible)
 		playlistwin_show(TRUE);
 	if (cfg.equalizer_visible)
-		equalizerwin_show(TRUE);		
-	
+		equalizerwin_show(TRUE);
+
 	draw_main_window(TRUE);
-	
-	mainwin_timeout_tag = gtk_timeout_add(10, idle_func, NULL); 
+
+	mainwin_timeout_tag = gtk_timeout_add(10, idle_func, NULL);
 	playlist_start_get_info_thread();
 
 	enable_x11r5_session_management(argc, argv);
