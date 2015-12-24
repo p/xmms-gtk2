@@ -300,7 +300,7 @@ static char *read_string(const char *filename, const char *section, const char *
 		fclose(file);
 		return NULL;
 	}
-		
+
 	buffer = g_malloc(statbuf.st_size);
 	fread(buffer, 1, statbuf.st_size, file);
 	while (!ret_buffer && off < statbuf.st_size)
@@ -449,10 +449,10 @@ static void util_menu_position(GtkMenu *menu, gint *x, gint *y, gpointer data)
 	struct MenuPos *pos = data;
 
 	gtk_widget_size_request(GTK_WIDGET(menu), &requisition);
-      
+
 	screen_width = gdk_screen_width();
 	screen_height = gdk_screen_height();
-	  
+
 	*x = CLAMP(pos->x - 2, 0, MAX(0, screen_width - requisition.width));
 	*y = CLAMP(pos->y - 2, 0, MAX(0, screen_height - requisition.height));
 }
@@ -552,13 +552,13 @@ static void util_add_url_callback(GtkWidget *w, GtkWidget *entry)
 GtkWidget* util_create_add_url_window(gchar *caption, GtkSignalFunc ok_func, GtkSignalFunc enqueue_func)
 {
 	GtkWidget *win, *vbox, *bbox, *ok, *enqueue, *cancel, *combo;
-	
+
 	win = gtk_window_new(GDK_WINDOW_DIALOG);
 	gtk_window_set_title(GTK_WINDOW(win), caption);
 	gtk_window_set_position(GTK_WINDOW(win), GTK_WIN_POS_MOUSE);
 	gtk_window_set_default_size(GTK_WINDOW(win), 400, -1);
 	gtk_container_set_border_width(GTK_CONTAINER(win), 10);
-	
+
 	vbox = gtk_vbox_new(FALSE, 10);
 	gtk_container_add(GTK_CONTAINER(win), vbox);
 
@@ -572,17 +572,17 @@ GtkWidget* util_create_add_url_window(gchar *caption, GtkSignalFunc ok_func, Gtk
 	gtk_entry_set_text(GTK_ENTRY(GTK_COMBO(combo)->entry), "");
 	gtk_combo_set_use_arrows_always(GTK_COMBO(combo), TRUE);
 	gtk_widget_show(combo);
-	
+
 	bbox = gtk_hbutton_box_new();
 	gtk_box_pack_start(GTK_BOX(vbox), bbox, FALSE, FALSE, 0);
 	gtk_widget_show(bbox);
 	gtk_button_box_set_layout(GTK_BUTTON_BOX(bbox), GTK_BUTTONBOX_END);
 	gtk_button_box_set_spacing(GTK_BUTTON_BOX(bbox), 5);
-	
+
 	ok = gtk_button_new_with_label(_("OK"));
 	gtk_signal_connect(GTK_OBJECT(ok), "clicked", util_add_url_callback, GTK_COMBO(combo)->entry);
 	gtk_signal_connect(GTK_OBJECT(ok), "clicked", ok_func, GTK_COMBO(combo)->entry);
-	
+
 	GTK_WIDGET_SET_FLAGS(ok, GTK_CAN_DEFAULT);
 	gtk_widget_grab_default(ok);
 	gtk_box_pack_start(GTK_BOX(bbox), ok, FALSE, FALSE, 0);
@@ -598,13 +598,13 @@ GtkWidget* util_create_add_url_window(gchar *caption, GtkSignalFunc ok_func, Gtk
 		gtk_box_pack_start(GTK_BOX(bbox), enqueue, FALSE, FALSE, 0);
 		gtk_widget_show(enqueue);
 	}
-	
+
 	cancel = gtk_button_new_with_label(_("Cancel"));
 	gtk_signal_connect_object(GTK_OBJECT(cancel), "clicked", GTK_SIGNAL_FUNC(gtk_widget_destroy), GTK_OBJECT(win));
 	GTK_WIDGET_SET_FLAGS(cancel, GTK_CAN_DEFAULT);
 	gtk_box_pack_start(GTK_BOX(bbox), cancel, FALSE, FALSE, 0);
 	gtk_widget_show(cancel);
-	
+
 	gtk_widget_show(vbox);
 	return win;
 }
@@ -635,7 +635,7 @@ static void filebrowser_changed(GtkFileSelection * filesel)
 		gtk_clist_clear(GTK_CLIST(filesel->dir_list));
 		gtk_clist_append(GTK_CLIST(filesel->dir_list), &current);
 		gtk_clist_append(GTK_CLIST(filesel->dir_list), &parent);
-		
+
 		gtk_clist_freeze(GTK_CLIST(filesel->file_list));
 		gtk_clist_clear(GTK_CLIST(filesel->file_list));
 		node = list;
@@ -679,7 +679,7 @@ gboolean util_filebrowser_is_dir(GtkFileSelection * filesel)
 	char *text;
 	struct stat buf;
 	gboolean retv = FALSE;
-	
+
 	text = g_strdup(gtk_file_selection_get_filename(filesel));
 	if (strlen(text) == 0)
 	{
@@ -743,7 +743,7 @@ static void filebrowser_add_files(GtkFileSelection * filesel)
 	sel_list = g_list_sort(sel_list, int_compare_func);
 
 	node = sel_list;
-	
+
 	if (node)
 	{
 		do {
@@ -793,7 +793,7 @@ static void filebrowser_play(GtkWidget * w, GtkWidget * filesel)
 static void filebrowser_add_selected_files(GtkWidget * w, gpointer data)
 {
 	GtkFileSelection *filesel = GTK_FILE_SELECTION(data);
-	
+
 	filebrowser_add_files(filesel);
 	gtk_clist_unselect_all(GTK_CLIST(filesel->file_list));
 
@@ -833,7 +833,7 @@ GtkWidget * util_create_filebrowser(gboolean play_button)
 
 	filebrowser = gtk_file_selection_new(title);
 	fb = GTK_FILE_SELECTION(filebrowser);
-		
+
 	gtk_clist_set_selection_mode(GTK_CLIST(fb->file_list),
 				     GTK_SELECTION_EXTENDED);
 	gtk_signal_connect(GTK_OBJECT(fb->selection_entry), "changed",
@@ -869,7 +869,7 @@ GtkWidget * util_create_filebrowser(gboolean play_button)
 	/*
 	 * Change the Cancel buttons caption to Close.
 	 */
-	
+
 	label = gtk_label_new(_("Close"));
 	gtk_misc_set_alignment(GTK_MISC(label), 0.5, 0.5);
 	gtk_container_remove(GTK_CONTAINER(fb->cancel_button),
@@ -923,7 +923,7 @@ GdkFont *util_font_load(char *name)
 	/* First try the prefered way, then just try to get some font */
 
 	if (!cfg.use_fontsets)
-	{	
+	{
 		if ((font = gdk_font_load(name)) == NULL)
 			font = gdk_fontset_load(name);
 	}
@@ -938,7 +938,7 @@ GdkFont *util_font_load(char *name)
 		g_warning("Failed to open font: \"%s\".", name);
 		font = gdk_font_load("fixed");
 	}
-	
+
 	return font;
 }
 
