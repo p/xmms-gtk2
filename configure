@@ -20138,7 +20138,7 @@ fi
 
 
 LIBS_save=$LIBS
-LIBS="$LIBS $GTK_LIBS"
+LIBS="$LIBS $GTK_LIBS -lX11"
 SM_LIBS=""
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for SmcOpenConnection in -lSM" >&5
 $as_echo_n "checking for SmcOpenConnection in -lSM... " >&6; }
