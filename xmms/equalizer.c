@@ -523,6 +523,9 @@ gboolean equalizerwin_keypress(GtkWidget * w, GdkEventKey * event, gpointer data
 			break;
 		default:
 			if (!gtk_accel_group_activate(equalizerwin_accel,
+						      /* TODO give a non-null quark? */
+						      NULL,
+						      equalizerwin,
 						      event->keyval,
 						      event->state))
 				gtk_widget_event(mainwin, (GdkEvent*) event);

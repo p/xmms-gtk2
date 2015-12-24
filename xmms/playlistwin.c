@@ -1618,7 +1618,8 @@ static gboolean playlistwin_keypress(GtkWidget * w, GdkEventKey * event, gpointe
 			refresh=FALSE;
 			break;
 		default:
-			if (!gtk_accel_group_activate(playlistwin_accel, event->keyval, event->state))
+			/* TODO give a non-null quark? */
+			if (!gtk_accel_group_activate(playlistwin_accel, NULL, playlistwin, event->keyval, event->state))
 				gtk_widget_event(mainwin, (GdkEvent *) event);
 			refresh = FALSE;
 			break;
