@@ -164,7 +164,8 @@ void esdout_set_volume(int l, int r)
 
 static void esdout_get_oss_volume(int *l, int *r)
 {
-	int fd, v, cmd, devs;
+	int fd, v, devs;
+	long cmd;
 
 	if (esd_cfg.use_remote)
 		return;
@@ -191,7 +192,8 @@ static void esdout_get_oss_volume(int *l, int *r)
 
 static void esdout_set_oss_volume(int l, int r)
 {
-	int fd, v, cmd, devs;
+	int fd, v, devs;
+	long cmd;
 
 	if (esd_cfg.use_remote)
 		return;
