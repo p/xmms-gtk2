@@ -185,7 +185,7 @@ dnl AM_PATH_ESD([MINIMUM-VERSION, [ACTION-IF-FOUND [, ACTION-IF-NOT-FOUND]]])
 dnl Test for ESD, and define ESD_CFLAGS and ESD_LIBS
 dnl
 AC_DEFUN([AM_PATH_ESD],
-[dnl 
+[dnl
 dnl Get the cflags and libraries from the esd-config script
 dnl
 AC_ARG_WITH(esd-prefix,[  --with-esd-prefix=PFX   Prefix where ESD is installed (optional)],
@@ -246,7 +246,7 @@ char*
 my_strdup (char *str)
 {
   char *new_str;
-  
+
   if (str)
     {
       new_str = malloc ((strlen (str) + 1) * sizeof(char));
@@ -254,7 +254,7 @@ my_strdup (char *str)
     }
   else
     new_str = NULL;
-  
+
   return new_str;
 }
 
@@ -298,7 +298,7 @@ int main ()
   fi
   if test "x$no_esd" = x ; then
      AC_MSG_RESULT(yes)
-     ifelse([$2], , :, [$2])     
+     ifelse([$2], , :, [$2])
   else
      AC_MSG_RESULT(no)
      if test "$ESD_CONFIG" = "no" ; then
@@ -1186,7 +1186,7 @@ dnl AM_PATH_GTK([MINIMUM-VERSION, [ACTION-IF-FOUND [, ACTION-IF-NOT-FOUND [, MOD
 dnl Test for GTK, and define GTK_CFLAGS and GTK_LIBS
 dnl
 AC_DEFUN([AM_PATH_GTK],
-[dnl 
+[dnl
 dnl Get the cflags and libraries from the gtk-config script
 dnl
 AC_ARG_WITH(gtk-prefix,[  --with-gtk-prefix=PFX   Prefix where GTK is installed (optional)],
@@ -1199,7 +1199,7 @@ AC_ARG_ENABLE(gtktest, [  --disable-gtktest       Do not try to compile and run 
   for module in . $4
   do
       case "$module" in
-         gthread) 
+         gthread)
              gtk_config_args="$gtk_config_args gthread"
          ;;
       esac
@@ -1248,7 +1248,7 @@ dnl
 #include <stdio.h>
 #include <stdlib.h>
 
-int 
+int
 main ()
 {
   int major, minor, micro;
@@ -1267,7 +1267,7 @@ main ()
       (gtk_minor_version != $gtk_config_minor_version) ||
       (gtk_micro_version != $gtk_config_micro_version))
     {
-      printf("\n*** 'gtk-config --version' returned %d.%d.%d, but GTK+ (%d.%d.%d)\n", 
+      printf("\n*** 'gtk-config --version' returned %d.%d.%d, but GTK+ (%d.%d.%d)\n",
              $gtk_config_major_version, $gtk_config_minor_version, $gtk_config_micro_version,
              gtk_major_version, gtk_minor_version, gtk_micro_version);
       printf ("*** was found! If gtk-config was correct, then it is best\n");
@@ -1278,7 +1278,7 @@ main ()
       printf("*** If gtk-config was wrong, set the environment variable GTK_CONFIG\n");
       printf("*** to point to the correct copy of gtk-config, and remove the file config.cache\n");
       printf("*** before re-running configure\n");
-    } 
+    }
 #if defined (GTK_MAJOR_VERSION) && defined (GTK_MINOR_VERSION) && defined (GTK_MICRO_VERSION)
   else if ((gtk_major_version != GTK_MAJOR_VERSION) ||
 	   (gtk_minor_version != GTK_MINOR_VERSION) ||
@@ -1324,7 +1324,7 @@ main ()
   fi
   if test "x$no_gtk" = x ; then
      AC_MSG_RESULT(yes)
-     ifelse([$2], , :, [$2])     
+     ifelse([$2], , :, [$2])
   else
      AC_MSG_RESULT(no)
      if test "$GTK_CONFIG" = "no" ; then
@@ -2548,7 +2548,7 @@ dnl Test for libmikmod, and define LIBMIKMOD_CFLAGS, LIBMIKMOD_LIBS and
 dnl LIBMIKMOD_LDADD
 dnl
 AC_DEFUN([AM_PATH_LIBMIKMOD],
-[dnl 
+[dnl
 dnl Get the cflags and libraries from the libmikmod-config script
 dnl
 AC_ARG_WITH(libmikmod-prefix,[  --with-libmikmod-prefix=PFX   Prefix where libmikmod is installed (optional)],
@@ -2640,7 +2640,7 @@ int main()
       (libmikmod_minor_version != $libmikmod_config_minor_version) ||
       (libmikmod_micro_version != $libmikmod_config_micro_version))
     {
-      printf("\n*** 'libmikmod-config --version' returned %d.%d.%d, but libmikmod (%d.%d.%d)\n", 
+      printf("\n*** 'libmikmod-config --version' returned %d.%d.%d, but libmikmod (%d.%d.%d)\n",
              $libmikmod_config_major_version, $libmikmod_config_minor_version, $libmikmod_config_micro_version,
              libmikmod_major_version, libmikmod_minor_version, libmikmod_micro_version);
       printf ("*** was found! If libmikmod-config was correct, then it is best\n");
@@ -2651,7 +2651,7 @@ int main()
       printf("*** If libmikmod-config was wrong, set the environment variable LIBMIKMOD_CONFIG\n");
       printf("*** to point to the correct copy of libmikmod-config, and remove the file config.cache\n");
       printf("*** before re-running configure\n");
-    } 
+    }
   else if ((libmikmod_major_version != LIBMIKMOD_VERSION_MAJOR) ||
 	   (libmikmod_minor_version != LIBMIKMOD_VERSION_MINOR) ||
            (libmikmod_micro_version != LIBMIKMOD_REVISION))
@@ -2695,7 +2695,7 @@ int main()
   fi
   if test "x$no_libmikmod" = x ; then
      AC_MSG_RESULT([yes, `$LIBMIKMOD_CONFIG --version`])
-     ifelse([$2], , :, [$2])     
+     ifelse([$2], , :, [$2])
   else
      AC_MSG_RESULT(no)
      if test "$LIBMIKMOD_CONFIG" = "no" ; then
@@ -2858,7 +2858,7 @@ dnl XIPH_PATH_OGG([ACTION-IF-FOUND [, ACTION-IF-NOT-FOUND]])
 dnl Test for libogg, and define OGG_CFLAGS and OGG_LIBS
 dnl
 AC_DEFUN([XIPH_PATH_OGG],
-[dnl 
+[dnl
 dnl Get the cflags and libraries
 dnl
 AC_ARG_WITH(ogg,[  --with-ogg=PFX   Prefix where libogg is installed (optional)], ogg_prefix="$withval", ogg_prefix="")
@@ -2916,7 +2916,7 @@ int main ()
 
   if test "x$no_ogg" = "x" ; then
      AC_MSG_RESULT(yes)
-     ifelse([$1], , :, [$1])     
+     ifelse([$1], , :, [$1])
   else
      AC_MSG_RESULT(no)
      if test -f conf.oggtest ; then
@@ -3690,7 +3690,7 @@ dnl XIPH_PATH_VORBIS([ACTION-IF-FOUND [, ACTION-IF-NOT-FOUND]])
 dnl Test for libvorbis, and define VORBIS_CFLAGS and VORBIS_LIBS
 dnl
 AC_DEFUN([XIPH_PATH_VORBIS],
-[dnl 
+[dnl
 dnl Get the cflags and libraries
 dnl
 AC_ARG_WITH(vorbis,[  --with-vorbis=PFX   Prefix where libvorbis is installed (optional)], vorbis_prefix="$withval", vorbis_prefix="")
@@ -3763,7 +3763,7 @@ int main ()
 
   if test "x$no_vorbis" = "x" ; then
      AC_MSG_RESULT(yes)
-     ifelse([$1], , :, [$1])     
+     ifelse([$1], , :, [$1])
   else
      AC_MSG_RESULT(no)
      if test -f conf.vorbistest ; then
