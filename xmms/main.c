@@ -4267,7 +4267,7 @@ int main(int argc, char **argv)
 	mainwin_create();
 
 	filename = g_strconcat(g_get_home_dir(), "/.xmms/gtkrc", NULL);
-	gtk_rc_init();
+	/* gtk_rc_init(); */
 	gtk_rc_parse(filename);
 	g_free(filename);
 
