@@ -74,7 +74,7 @@ AM_PROG_LIBTOOL
 AC_CHECK_HEADER([pthread.h],,[AC_MSG_ERROR([*** POSIX threads support not installed - please install first ***])])
 
 AM_PATH_GLIB_2_0([2.0.0],,[AC_MSG_ERROR([*** GLIB >= 2.0.0 not installed - please install first ***])])
-AM_PATH_GTK([1.2.2],,[AC_MSG_ERROR([*** GTK+ >= 1.2.2 not installed - please install first ***])],[gthread])
+AM_PATH_GTK_2_0([2.0.0],,[AC_MSG_ERROR([*** GTK+ >= 2.0.0 not installed - please install first ***])],[gthread])
 AC_PATH_PROG([XMMS_PATH],[xmms],[no])
 
 
