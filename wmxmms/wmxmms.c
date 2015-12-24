@@ -103,8 +103,6 @@ GtkTargetEntry drop_types[] =
 
 /* Does anyone know a better way? */
 
-extern Window gdk_leader_window;
-
 void action_play(void)
 {
 	xmms_remote_play(xmms_session);
@@ -688,7 +686,7 @@ void init(void)
 	pixmap = gdk_pixmap_create_from_xpm_d(window->window,
 					      &mask, NULL, xmms_dock_master_xpm);
 
-	leader = gdk_window_foreign_new(gdk_leader_window);
+	leader = gdk_window_foreign_new(gdk_x11_get_default_root_xwindow());
 	gdk_window_set_icon(leader, icon_win->window, NULL, NULL);
 	gdk_window_reparent(icon_win->window, leader, 0, 0);
 
