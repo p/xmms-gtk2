@@ -82,7 +82,7 @@ dnl ***
 dnl *** X11 features
 dnl ***
 LIBS_save=$LIBS
-LIBS="$LIBS $GTK_LIBS -lX11"
+LIBS="$LIBS $GTK_LIBS -lX11 -lm -lgthread-2.0"
 SM_LIBS=""
 AC_CHECK_LIB([SM], [SmcOpenConnection],[
 	AC_DEFINE([WITH_SM],, [Define if building with support for X11R6 session management])
