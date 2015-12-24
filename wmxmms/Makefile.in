@@ -354,7 +354,7 @@ clean-binPROGRAMS:
 	  echo " rm -f $$p $$f"; \
 	  rm -f $$p $$f ; \
 	done
-wmxmms$(EXEEXT): $(wmxmms_OBJECTS) $(wmxmms_DEPENDENCIES) 
+wmxmms$(EXEEXT): $(wmxmms_OBJECTS) $(wmxmms_DEPENDENCIES)
 	@rm -f wmxmms$(EXEEXT)
 	$(LINK) $(wmxmms_LDFLAGS) $(wmxmms_OBJECTS) $(wmxmms_LDADD) $(LIBS)
 

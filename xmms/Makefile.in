@@ -404,7 +404,7 @@ i18n.h: stamp-h2
 stamp-h2: $(srcdir)/i18n.h.in $(top_builddir)/config.status
 	@rm -f stamp-h2
 	cd $(top_builddir) && $(SHELL) ./config.status xmms/i18n.h
-$(srcdir)/i18n.h.in:  $(am__configure_deps) 
+$(srcdir)/i18n.h.in:  $(am__configure_deps)
 	cd $(top_srcdir) && $(AUTOHEADER)
 	rm -f stamp-h2
 	touch $@
@@ -439,7 +439,7 @@ clean-binPROGRAMS:
 	  echo " rm -f $$p $$f"; \
 	  rm -f $$p $$f ; \
 	done
-xmms$(EXEEXT): $(xmms_OBJECTS) $(xmms_DEPENDENCIES) 
+xmms$(EXEEXT): $(xmms_OBJECTS) $(xmms_DEPENDENCIES)
 	@rm -f xmms$(EXEEXT)
 	$(LINK) $(xmms_LDFLAGS) $(xmms_OBJECTS) $(xmms_LDADD) $(LIBS)
 
