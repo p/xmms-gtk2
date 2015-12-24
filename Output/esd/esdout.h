@@ -68,6 +68,7 @@ void esdout_fetch_volume(int *l, int *r);
 void esdout_set_volume(int l, int r);
 void esdout_mixer_init(void);
 void esdout_mixer_init_vol(int l, int r);
+void esdout_reset_playerid(void);
 
 int esdout_playing(void);
 int esdout_free(void);
