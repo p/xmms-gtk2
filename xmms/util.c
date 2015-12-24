@@ -978,16 +978,20 @@ void util_set_cursor(GtkWidget *window)
 
 void util_dump_menu_rc(void)
 {
+	/* TODO use https://developer.gnome.org/gtk2/stable/gtk2-Resource-Files.html ?
 	char *filename = g_strconcat(g_get_home_dir(), "/.xmms/menurc", NULL);
 	gtk_item_factory_dump_rc(filename, NULL, FALSE);
 	g_free(filename);
+	*/
 }
 
 void util_read_menu_rc(void)
 {
+	/* TODO use https://developer.gnome.org/gtk2/stable/gtk2-Resource-Files.html ?
 	char *filename = g_strconcat(g_get_home_dir(), "/.xmms/menurc", NULL);
 	gtk_item_factory_parse_rc(filename);
 	g_free(filename);
+	*/
 }
 
 void util_dialog_keypress_cb(GtkWidget *w, GdkEventKey *event, gpointer data)
