@@ -22,13 +22,13 @@ include_dir="@includedir@"
 xmms_include_dir="@includedir@/@PACKAGE@"
 lib_dir="@libdir@"
 
-if ( (gtk-config --version) > /dev/null 2>&1)  then
-   gtk_libs=`gtk-config --libs`
-   gtk_cflags=`gtk-config --cflags`
-else
+#if ( (gtk-config --version) > /dev/null 2>&1)  then
+#   gtk_libs=`gtk-config --libs`
+#   gtk_cflags=`gtk-config --cflags`
+#else
    gtk_libs="@GTK_LIBS@"
    gtk_cflags="@GTK_CFLAGS@"
-fi
+#fi
 
 plugin_dir="@plugindir@"
 visualization_plugin_dir="@plugindir@/@VISUALIZATION_PLUGIN_DIR@"
