@@ -119,8 +119,8 @@ GtkItemFactoryEntry playlistwin_sort_menu_entries[] =
 					PLAYLISTWIN_SORT_REVERSE, "<Item>"},
 };
 
-static const int playlistwin_sort_menu_entries_num = 
-	sizeof(playlistwin_sort_menu_entries) / 
+static const int playlistwin_sort_menu_entries_num =
+	sizeof(playlistwin_sort_menu_entries) /
 	sizeof(playlistwin_sort_menu_entries[0]);
 
 enum {
@@ -149,8 +149,8 @@ GtkItemFactoryEntry playlistwin_sub_menu_entries[] =
 	{N_("/Physically Delete Files"), NULL, playlistwin_sub_menu_callback, PLAYLISTWIN_PHYSICALLY_DELETE, "<Item>"},
 };
 
-static const int playlistwin_sub_menu_entries_num = 
-	sizeof(playlistwin_sub_menu_entries) / 
+static const int playlistwin_sub_menu_entries_num =
+	sizeof(playlistwin_sub_menu_entries) /
 	sizeof(playlistwin_sub_menu_entries[0]);
 
 GtkItemFactoryEntry playlistwin_popup_menu_entries[] =
@@ -185,8 +185,8 @@ GtkItemFactoryEntry playlistwin_popup_menu_entries[] =
 	{N_("/Playlist/New List"), NULL, playlistwin_popup_menu_callback, PLIST_NEW, "<Item>"},
 };
 
-static const int playlistwin_popup_menu_entries_num = 
-	sizeof(playlistwin_popup_menu_entries) / 
+static const int playlistwin_popup_menu_entries_num =
+	sizeof(playlistwin_popup_menu_entries) /
 	sizeof(playlistwin_popup_menu_entries[0]);
 
 static void playlistwin_update_info(void)
@@ -196,7 +196,7 @@ static void playlistwin_update_info(void)
 	gboolean selection_more, total_more;
 
 	playlist_get_total_time(&total, &selection, &total_more, &selection_more);
-	
+
 	if (selection > 0 || (selection == 0 && !selection_more))
 	{
 		if (selection > 3600)
@@ -519,7 +519,7 @@ static void playlistwin_resize(int width, int height)
 					gdk_rgb_get_visual()->depth);
 	widget_list_change_pixmap(playlistwin_wlist, playlistwin_bg);
 	playlistwin_create_mask();
-	
+
 	playlistwin_draw_frame();
 	draw_widget_list(playlistwin_wlist, &dummy, TRUE);
 	clear_widget_list_redraw(playlistwin_wlist);
@@ -532,7 +532,7 @@ static gboolean playlistwin_resize_handler(gpointer data)
 {
 	GDK_THREADS_ENTER();
 	playlistwin_resize(playlistwin_resizeq.w, playlistwin_resizeq.h);
-	
+
 	playlistwin_resizeq.w = -1;
 	playlistwin_resizeq.h = -1;
 
@@ -739,7 +739,7 @@ static void playlistwin_save_playlist_error(char* path, GtkWidget *filesel)
 	gtk_widget_grab_default(close);
 
 	gtk_widget_show_all(dialog);
-}	
+}
 
 static void playlistwin_check_overwrite_cb(GtkButton *w, gpointer user_data)
 {
@@ -763,7 +763,7 @@ static void playlistwin_check_overwrite(GtkWidget *filesel, char *filename, int 
 	data->filename = filename;
 	data->pls = pls;
 	data->fsel = filesel;
-	
+
 	dialog = gtk_dialog_new();
 	gtk_window_set_title(GTK_WINDOW(dialog), _("File exists!"));
 	gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(filesel));
@@ -782,10 +782,10 @@ static void playlistwin_check_overwrite(GtkWidget *filesel, char *filename, int 
 	overwrite = gtk_button_new_with_label(_("Overwrite"));
 	gtk_signal_connect(GTK_OBJECT(overwrite), "clicked",
 			   GTK_SIGNAL_FUNC(playlistwin_check_overwrite_cb),
-			   data);	
+			   data);
 	gtk_signal_connect_object(GTK_OBJECT(overwrite), "clicked",
 				  GTK_SIGNAL_FUNC(gtk_widget_destroy),
-				  GTK_OBJECT(dialog));	
+				  GTK_OBJECT(dialog));
 	GTK_WIDGET_SET_FLAGS(overwrite, GTK_CAN_DEFAULT);
 	gtk_box_pack_start(GTK_BOX(bbox), overwrite, FALSE, FALSE, 0);
 	cancel = gtk_button_new_with_label(_("Cancel"));
@@ -811,9 +811,9 @@ static void playlistwin_save_filesel_ok(GtkWidget * w, GtkFileSelection * filese
 
 	if (util_filebrowser_is_dir(filesel))
 		return;
-	
+
 	filename = gtk_file_selection_get_filename(filesel);
-	
+
 	if ((slash = strrchr(filename, '/')) != NULL)
 		len = slash - filename + 1;
 	else
@@ -851,7 +851,7 @@ static void playlistwin_save_filesel_ok(GtkWidget * w, GtkFileSelection * filese
 	}
 	else if (playlistwin_save_type == PLAYLISTWIN_SAVE_PLS)
 		pls = TRUE;
-	
+
 	g_free(cfg.playlist_path);
 	cfg.playlist_path = g_strndup(filename, len);
 
@@ -872,7 +872,7 @@ static void playlistwin_load_filesel_ok(GtkWidget * w, GtkWidget * filesel)
 
 	if (util_filebrowser_is_dir(GTK_FILE_SELECTION(filesel)))
 		return;
-	
+
 	filename = g_strdup(gtk_file_selection_get_filename(GTK_FILE_SELECTION(filesel)));
 	text = g_strdup(filename);
 
@@ -1148,7 +1148,7 @@ static void playlistwin_press(GtkWidget * widget, GdkEventButton * event, gpoint
 		int nx[] = {104, 104, 104}, ny[] = {111, 130, 149};
 		int sx[] = {127, 127, 127}, sy[] = {111, 130, 149};
 		int barx = 150, bary = 111;
-	
+
 		playlist_popup(xpos + 70,
 			       ypos + cfg.playlist_height - (3 * 18) - 11, 3,
 			       nx, ny, sx, sy, barx, bary,
@@ -1160,7 +1160,7 @@ static void playlistwin_press(GtkWidget * widget, GdkEventButton * event, gpoint
 		int nx[] = {154, 154, 154}, ny[] = {111, 130, 149};
 		int sx[] = {177, 177, 177}, sy[] = {111, 130, 149};
 		int barx = 200, bary = 111;
-	
+
 		playlist_popup(xpos + 99,
 			       ypos + cfg.playlist_height - (3 * 18) - 11, 3,
 			       nx, ny, sx, sy, barx, bary,
@@ -1316,7 +1316,7 @@ static gboolean playlistwin_configure(GtkWidget * window, GdkEventConfigure *eve
 		    (event->height != cfg.playlist_height && event->height != 14))
 			playlistwin_queue_resize(event->width, event->height);
 	}
-	
+
 	if (cfg.show_wm_decorations)
 		gdk_window_get_root_origin(window->window,
 					   &cfg.playlist_x, &cfg.playlist_y);
@@ -1346,7 +1346,7 @@ static int playlistwin_client_event(GtkWidget *w, GdkEventClient *event, gpointe
 		equalizerwin_set_back_pixmap();
 		playlistwin_set_back_pixmap();
 		return TRUE;
-		
+
 	}
 	return FALSE;
 }
@@ -1429,7 +1429,7 @@ static void playlistwin_physically_delete_cb(GtkWidget *widget, gpointer data)
 		g_free(message);
 	}
 }
-	
+
 static void playlistwin_physically_delete(void)
 {
 	GtkWidget *dialog, *vbox, *label, *bbox, *ok, *cancel;
@@ -1498,7 +1498,7 @@ static void playlistwin_keypress_up_down_handler(PlayList_List *pl, gboolean up,
 		return;
 	if (!(state & GDK_MOD1_MASK))
 		playlist_select_all(FALSE);
-	
+
 	if (pl->pl_prev_selected == -1 ||
 	    (!playlistwin_item_visible(pl->pl_prev_selected) &&
 	     !(state & (GDK_SHIFT_MASK | GDK_MOD1_MASK) &&
@@ -1516,7 +1516,7 @@ static void playlistwin_keypress_up_down_handler(PlayList_List *pl, gboolean up,
 		pl->pl_prev_max += (up ? -1 : 1);
 		pl->pl_prev_max =
 			CLAMP(pl->pl_prev_max, 0, get_playlist_length() - 1);
-		
+
 		pl->pl_first = MIN(pl->pl_first, pl->pl_prev_max);
 		pl->pl_first = MAX(pl->pl_first, pl->pl_prev_max -
 				   pl->pl_num_visible + 1);
@@ -1529,7 +1529,7 @@ static void playlistwin_keypress_up_down_handler(PlayList_List *pl, gboolean up,
 			playlist_list_move_up(pl);
 		else
 			playlist_list_move_down(pl);
-		
+
 		if (pl->pl_prev_min != -1)
 		{
 			if (pl->pl_prev_min < pl->pl_first)
@@ -1543,15 +1543,15 @@ static void playlistwin_keypress_up_down_handler(PlayList_List *pl, gboolean up,
 		pl->pl_prev_selected--;
 	else
 		pl->pl_prev_selected++;
-	
+
 	pl->pl_prev_selected =
 		CLAMP(pl->pl_prev_selected, 0, get_playlist_length() - 1);
-	
+
 	if (pl->pl_prev_selected < pl->pl_first)
 		pl->pl_first--;
 	else if (pl->pl_prev_selected >= (pl->pl_first + pl->pl_num_visible))
 		pl->pl_first++;
-	
+
 	playlist_select_range(pl->pl_prev_selected, pl->pl_prev_selected, TRUE);
 	pl->pl_prev_min = -1;
 
@@ -1567,7 +1567,7 @@ static gboolean playlistwin_keypress(GtkWidget * w, GdkEventKey * event, gpointe
 		gtk_widget_event(mainwin, (GdkEvent *) event);
 		return TRUE;
 	}
-	
+
 	switch (keyval = event->keyval)
 	{
 		case GDK_KP_Up:
@@ -1706,7 +1706,7 @@ void draw_playlist_window(gboolean force)
 		playlistwin_draw_frame();
 		lock_widget_list(playlistwin_wlist);
 		draw_widget_list(playlistwin_wlist, &redraw, TRUE);
-		
+
 	}
 	else
 	{
@@ -1963,7 +1963,7 @@ void playlistwin_create(void)
 {
 	GtkWidget *item, *menu;
 
-	playlistwin_accel = gtk_accel_group_new();	
+	playlistwin_accel = gtk_accel_group_new();
 
 	playlistwin_sort_menu = gtk_item_factory_new(GTK_TYPE_MENU, "<Main>",
 						     playlistwin_accel);
@@ -2080,7 +2080,7 @@ static void playlistwin_popup_menu_callback(gpointer cb_data, guint action, GtkW
 			break;
 		case MISC_QUEUE_MANAGER:
 			mainwin_queue_manager();
-			break; 
+			break;
 		case SEL_LOOKUP:
 			playlist_read_info_selection();
 			break;
