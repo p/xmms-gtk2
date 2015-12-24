@@ -891,15 +891,15 @@ GtkWidget * util_create_filebrowser(gboolean play_button)
 	gtk_container_add(GTK_CONTAINER(fb->ok_button), label);
 	gtk_widget_show(label);
 
-	if (play_button)
+	/* if (play_button)
 	{
 		GtkArg arg;
 
-		/*
+		 *
 		 * The amount of fiddling we do with the filesel
 		 * internals are starting to get ridicolous.  Maybe we
 		 * should copy the entire filesel code instead.
-		 */
+		 *
 		arg.name = "GtkWidget::parent";
 		gtk_object_arg_get(GTK_OBJECT(fb->ok_button), &arg, NULL);
 		button = gtk_button_new_with_label(_("Add"));
@@ -910,7 +910,7 @@ GtkWidget * util_create_filebrowser(gboolean play_button)
 				   button, TRUE, TRUE, 0);
 		gtk_box_reorder_child(GTK_BOX(arg.d.object_data), button, 1);
 		gtk_widget_show(button);
-	}
+	} */
 
 	gtk_widget_show(filebrowser);
 	return filebrowser;
