@@ -21,7 +21,7 @@
  * Modified by the GTK+ Team and others 1997-1999.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
 /*
@@ -94,7 +94,7 @@ GtkType xmms_entry_get_type(void)
 
 		entry_type = gtk_type_unique(GTK_TYPE_ENTRY, &entry_info);
 	}
-	
+
 	return entry_type;
 }
 
@@ -142,7 +142,7 @@ static int gtk_entry_key_press(GtkWidget *widget, GdkEventKey *event)
 
 		extend_start = (editable->current_pos == sel_start_pos);
 	}
-	
+
 	switch (event->keyval)
 	{
 		case GDK_Insert:
@@ -166,7 +166,7 @@ static int gtk_entry_key_press(GtkWidget *widget, GdkEventKey *event)
 							  MIN(sel_start_pos,
 							      sel_end_pos));
 				/* Force redraw below */
-				initial_pos = -1; 
+				initial_pos = -1;
 			}
 			else
 				gtk_move_backward_character(entry);
@@ -179,7 +179,7 @@ static int gtk_entry_key_press(GtkWidget *widget, GdkEventKey *event)
 							  MAX(sel_start_pos,
 							      sel_end_pos));
 				/* Force redraw below */
-				initial_pos = -1; 
+				initial_pos = -1;
 			}
 			else
 				gtk_move_forward_character(entry);
@@ -365,7 +365,7 @@ static void gtk_move_backward_word(GtkEntry *entry)
 
 		if (i < 0)
 			i = 0;
-	  
+
 		gtk_editable_set_position(GTK_EDITABLE(entry), i);
 	}
 }
