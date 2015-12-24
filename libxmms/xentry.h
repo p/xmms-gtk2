@@ -39,7 +39,7 @@ extern "C" {
 
 
 /* TODO rename */
-typedef void (*GtkTextFunction) (GtkEditable *editable, guint32 time_);
+typedef void (*XmmsGtkTextFunction) (GtkEditable *editable, guint32 time_);
 
 
 #define XMMS_TYPE_ENTRY            (xmms_entry_get_type())
