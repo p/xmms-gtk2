@@ -1,6 +1,6 @@
 bin_PROGRAMS = wmxmms
 
-wmxmms_LDADD = @GTK_LIBS@ $(top_builddir)/libxmms/libxmms.la @LTLIBINTL@
+wmxmms_LDADD = @GTK_LIBS@ $(top_builddir)/libxmms/libxmms.la @LTLIBINTL@ -lX11 -lm -lgthread-2.0
 
 wmxmms_SOURCES = 	\
 getopt.c \
