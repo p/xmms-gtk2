@@ -30,11 +30,16 @@
 
 #include <gdk/gdk.h>
 #include <gtk/gtkentry.h>
+#include <gtk/gtkeditable.h>
 
 
 #ifdef __cplusplus
 extern "C" {
 #endif /* __cplusplus */
+
+
+/* TODO rename */
+typedef void (*GtkTextFunction) (GtkEditable *editable, guint32 time_);
 
 
 #define XMMS_TYPE_ENTRY            (xmms_entry_get_type())
