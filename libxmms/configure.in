@@ -31,8 +31,8 @@ AC_C_BIGENDIAN
 
 XMMS_FUNC_POSIX([sched_setscheduler nanosleep])
 
-AM_PATH_GLIB([1.2.2],,[AC_MSG_ERROR([*** GLIB >= 1.2.2 not installed - please install first ***])])
-AM_PATH_GTK([1.2.2],,[AC_MSG_ERROR([*** GTK+ >= 1.2.2 not installed - please install first ***])],[gthread])
+AM_PATH_GLIB_2_0([2.0.0],,[AC_MSG_ERROR([*** GLIB >= 2.0.0 not installed - please install first ***])])
+AM_PATH_GTK_2_0([2.0.0],,[AC_MSG_ERROR([*** GTK+ >= 2.0.0 not installed - please install first ***])],[gthread])
 
 if test -n "$GCC"
 then
