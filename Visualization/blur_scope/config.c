@@ -63,7 +63,7 @@ void bscope_configure (void)
 	color[1]=((gdouble)((bscope_cfg.color %0x10000)/0x100))/256;
 	color[2]=((gdouble)(bscope_cfg.color %0x100))/256;
 	
-	configure_win = gtk_window_new(GTK_WINDOW_DIALOG);
+	configure_win = gtk_window_new(GDK_WINDOW_DIALOG);
 	gtk_container_set_border_width(GTK_CONTAINER(configure_win), 10);
 	gtk_window_set_title(GTK_WINDOW(configure_win), _("Color Entry"));
 	gtk_window_set_policy(GTK_WINDOW(configure_win), FALSE, FALSE, FALSE);

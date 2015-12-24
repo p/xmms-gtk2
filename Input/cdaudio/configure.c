@@ -335,7 +335,7 @@ static void configurewin_check_drive(GtkButton *w, gpointer data)
 				
 	}
 			
-	window = gtk_window_new(GTK_WINDOW_DIALOG);
+	window = gtk_window_new(GDK_WINDOW_DIALOG);
 	gtk_window_set_transient_for(GTK_WINDOW(window),
 				     GTK_WINDOW(cdda_configure_win));
 	gtk_container_set_border_width(GTK_CONTAINER(window), 10);
@@ -504,7 +504,7 @@ void cdda_configure(void)
 	if (cdda_configure_win)
 		return;
 	
-	cdda_configure_win = gtk_window_new(GTK_WINDOW_DIALOG);
+	cdda_configure_win = gtk_window_new(GDK_WINDOW_DIALOG);
 	gtk_signal_connect(GTK_OBJECT(cdda_configure_win), "destroy",
 			   GTK_SIGNAL_FUNC(gtk_widget_destroyed),
 			   &cdda_configure_win);

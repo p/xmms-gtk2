@@ -461,7 +461,7 @@ void vorbis_file_info_box(char *fn)
 		GtkWidget *table, *bbox, *cancel_button;
 		GtkWidget *save_button, *remove_button;
 
-		window = gtk_window_new(GTK_WINDOW_DIALOG);
+		window = gtk_window_new(GDK_WINDOW_DIALOG);
 		gtk_window_set_policy(GTK_WINDOW(window), FALSE, FALSE, FALSE);
 		gtk_signal_connect(GTK_OBJECT(window), "destroy", 
 			GTK_SIGNAL_FUNC(gtk_widget_destroyed), &window);

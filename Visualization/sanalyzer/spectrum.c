@@ -82,7 +82,7 @@ static void sanalyzer_init(void)
 	int i;
 	if(window)
 		return;
-	window = gtk_window_new(GTK_WINDOW_DIALOG);
+	window = gtk_window_new(GDK_WINDOW_DIALOG);
 	gtk_window_set_title(GTK_WINDOW(window),_("Spectrum analyzer"));
 	gtk_window_set_policy(GTK_WINDOW(window), FALSE, FALSE, FALSE);
 	gtk_widget_realize(window);

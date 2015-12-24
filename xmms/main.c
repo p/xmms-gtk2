@@ -1462,7 +1462,7 @@ void mainwin_jump_to_time(void)
 	if (!get_input_playing())
 		return;
 
-	mainwin_jtt = gtk_window_new(GTK_WINDOW_DIALOG);
+	mainwin_jtt = gtk_window_new(GDK_WINDOW_DIALOG);
 	gtk_window_set_title(GTK_WINDOW(mainwin_jtt), _("Jump to time"));
 	gtk_window_set_policy(GTK_WINDOW(mainwin_jtt), FALSE, FALSE, FALSE);
 	gtk_window_set_transient_for(GTK_WINDOW(mainwin_jtt), GTK_WINDOW(mainwin));
@@ -1876,7 +1876,7 @@ static void mainwin_jump_to_file(void)
 	 */
 	GtkWidget **edit_clist_qlist_and_queue = g_malloc(sizeof(GtkWidget *)*4);
 
-	mainwin_jtf = gtk_window_new(GTK_WINDOW_DIALOG);
+	mainwin_jtf = gtk_window_new(GDK_WINDOW_DIALOG);
 	gtk_window_set_title(GTK_WINDOW(mainwin_jtf), _("Jump to file"));
 	gtk_window_set_transient_for(GTK_WINDOW(mainwin_jtf),
 				     GTK_WINDOW(mainwin));
@@ -2198,7 +2198,7 @@ void mainwin_queue_manager(void)
 	 */
 	GtkWidget **edit_clist_qlist_and_queue = g_malloc(sizeof(GtkWidget *)*4);
 
-	mainwin_qm = gtk_window_new(GTK_WINDOW_DIALOG);
+	mainwin_qm = gtk_window_new(GDK_WINDOW_DIALOG);
 	gtk_window_set_title(GTK_WINDOW(mainwin_qm), _("Jump to file"));
 	gtk_window_set_transient_for(GTK_WINDOW(mainwin_qm),
 				     GTK_WINDOW(mainwin));

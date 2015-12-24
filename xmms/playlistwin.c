@@ -1920,7 +1920,7 @@ static void selection_received(GtkWidget *widget, GtkSelectionData *selection_da
 
 static void playlistwin_create_gtk(void)
 {
-	playlistwin = gtk_window_new(GTK_WINDOW_DIALOG);
+	playlistwin = gtk_window_new(GDK_WINDOW_DIALOG);
 	dock_add_window(dock_window_list, playlistwin);
 	gtk_widget_set_app_paintable(playlistwin, TRUE);
 	if (cfg.show_wm_decorations)

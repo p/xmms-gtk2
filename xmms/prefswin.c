@@ -715,7 +715,7 @@ void create_prefs_window(void)
 
 	char *titles[1];
 
-	prefswin = gtk_window_new(GTK_WINDOW_DIALOG);
+	prefswin = gtk_window_new(GDK_WINDOW_DIALOG);
 	gtk_window_set_title(GTK_WINDOW(prefswin), _("Preferences"));
 	gtk_window_set_policy(GTK_WINDOW(prefswin), FALSE, FALSE, FALSE);
 	gtk_window_set_transient_for(GTK_WINDOW(prefswin), GTK_WINDOW(mainwin));

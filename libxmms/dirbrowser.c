@@ -276,7 +276,7 @@ GtkWidget *xmms_create_dir_browser(char *title, char *current_path, GtkSelection
 	GtkCTree *ctree;
 	struct dirnode *dirnode;
 
-	window = gtk_window_new(GTK_WINDOW_DIALOG);
+	window = gtk_window_new(GDK_WINDOW_DIALOG);
 	gtk_window_set_default_size(GTK_WINDOW(window), 300, 400);
 	gtk_window_set_title(GTK_WINDOW(window), title);
 	gtk_container_border_width(GTK_CONTAINER(window), 10);

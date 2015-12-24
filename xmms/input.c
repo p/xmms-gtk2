@@ -388,7 +388,7 @@ static void input_general_file_info_box(char *filename, InputPlugin *ip)
 
 	char *title, *iplugin;
 		
-	window = gtk_window_new(GTK_WINDOW_DIALOG);
+	window = gtk_window_new(GDK_WINDOW_DIALOG);
 	gtk_window_set_policy(GTK_WINDOW(window), FALSE, TRUE, FALSE);
 	title = g_strdup_printf(_("File Info - %s"), g_basename(filename));
 	gtk_window_set_title(GTK_WINDOW(window), title);

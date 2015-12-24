@@ -528,7 +528,7 @@ void sun_configure(void)
 		gdk_window_raise(configure_win->window);
 		return;
 	}
-	configure_win = gtk_window_new(GTK_WINDOW_DIALOG);
+	configure_win = gtk_window_new(GDK_WINDOW_DIALOG);
 	gtk_signal_connect(GTK_OBJECT(configure_win), "destroy",
 			   GTK_SIGNAL_FUNC(configure_win_destroy), NULL);
 

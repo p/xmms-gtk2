@@ -844,7 +844,7 @@ void cdda_cddb_show_network_window(GtkWidget *w, gpointer data)
 	if (debug_window)
 		return;
 	
-	debug_window = gtk_window_new(GTK_WINDOW_DIALOG);
+	debug_window = gtk_window_new(GDK_WINDOW_DIALOG);
 	gtk_signal_connect(GTK_OBJECT(debug_window), "destroy",
 			   GTK_SIGNAL_FUNC(gtk_widget_destroyed), &debug_window);
 	gtk_window_set_title(GTK_WINDOW(debug_window), "CDDB networkdebug");

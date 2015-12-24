@@ -46,7 +46,7 @@ void create_skin_window(void)
 	char *titles[1];
 	GtkWidget *vbox, *hbox, *main_hbox, *separator, *scrolled_win, *checkbox;
 
-	skinwin = gtk_window_new(GTK_WINDOW_DIALOG);
+	skinwin = gtk_window_new(GDK_WINDOW_DIALOG);
 	gtk_window_set_title(GTK_WINDOW(skinwin), _("Skin selector"));
 	gtk_window_set_transient_for(GTK_WINDOW(skinwin), GTK_WINDOW(mainwin));
 	gtk_signal_connect(GTK_OBJECT(skinwin), "delete_event", GTK_SIGNAL_FUNC(skinwin_delete_event), NULL);

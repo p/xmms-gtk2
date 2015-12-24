@@ -740,7 +740,7 @@ static void equalizerwin_create_widgets(void)
 
 static void equalizerwin_create_gtk(void)
 {
-	equalizerwin = gtk_window_new(GTK_WINDOW_DIALOG);
+	equalizerwin = gtk_window_new(GDK_WINDOW_DIALOG);
 	dock_add_window(dock_window_list, equalizerwin);
 	gtk_widget_set_app_paintable(equalizerwin, TRUE);
 	gtk_window_set_policy(GTK_WINDOW(equalizerwin), FALSE, FALSE, TRUE);
@@ -1284,7 +1284,7 @@ static GtkWidget *equalizerwin_create_list_window(GList * preset_list,
 	char *preset_text[1];
 	GList *node;
 
-	*window = gtk_window_new(GTK_WINDOW_DIALOG);
+	*window = gtk_window_new(GDK_WINDOW_DIALOG);
 	gtk_signal_connect(GTK_OBJECT(*window), "destroy",
 			   GTK_SIGNAL_FUNC(gtk_widget_destroyed), window);
 	gtk_window_set_transient_for(GTK_WINDOW(*window), GTK_WINDOW(equalizerwin));
@@ -1637,7 +1637,7 @@ GtkWidget * equalizerwin_create_conf_window(void)
 	GtkWidget *vbox, *hbox, *instructions;
 	GtkWidget *ok, *cancel, *apply;
 
-	window = gtk_window_new(GTK_WINDOW_DIALOG);
+	window = gtk_window_new(GDK_WINDOW_DIALOG);
 	gtk_window_set_title(GTK_WINDOW(window), _("Configure Equalizer"));
 	gtk_window_set_policy(GTK_WINDOW(window), FALSE, FALSE, FALSE);
 	gtk_window_set_transient_for(GTK_WINDOW(window), GTK_WINDOW(mainwin));

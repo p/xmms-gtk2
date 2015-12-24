@@ -141,7 +141,7 @@ static void irconf_control_cb(GtkWidget * w, gchar * data)
 
 		keepConfGoing = TRUE;
 		irbutton_to_edit = data;
-		irconf_controlwin = gtk_window_new(GTK_WINDOW_DIALOG);
+		irconf_controlwin = gtk_window_new(GDK_WINDOW_DIALOG);
 		gtk_signal_connect(GTK_OBJECT(irconf_controlwin), "destroy", GTK_SIGNAL_FUNC(gtk_widget_destroyed), &irconf_controlwin);
 		tmp=g_strdup_printf(_("`%s' Button Setup"),_(data));
 		gtk_window_set_title(GTK_WINDOW(irconf_controlwin), tmp);
@@ -250,7 +250,7 @@ void ir_configure(void)
 	if (!irconf_mainwin)
 	{
 
-		irconf_mainwin = gtk_window_new(GTK_WINDOW_DIALOG);
+		irconf_mainwin = gtk_window_new(GDK_WINDOW_DIALOG);
 		gtk_signal_connect(GTK_OBJECT(irconf_mainwin), "destroy", GTK_SIGNAL_FUNC(gtk_widget_destroyed), &irconf_mainwin);
 		gtk_window_set_title(GTK_WINDOW(irconf_mainwin), _("XMMS IRman Configuration"));
 		gtk_window_set_policy(GTK_WINDOW(irconf_mainwin), FALSE, FALSE, FALSE);

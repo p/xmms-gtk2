@@ -385,7 +385,7 @@ static void disk_configure(void)
 
 	if (!configure_win)
 	{
-		configure_win = gtk_window_new(GTK_WINDOW_DIALOG);
+		configure_win = gtk_window_new(GDK_WINDOW_DIALOG);
 
 		gtk_signal_connect(GTK_OBJECT(configure_win), "destroy", GTK_SIGNAL_FUNC(configure_destroy), NULL);
 		gtk_signal_connect(GTK_OBJECT(configure_win), "destroy", GTK_SIGNAL_FUNC(gtk_widget_destroyed), &configure_win);

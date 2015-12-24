@@ -22,7 +22,7 @@ void ir_about(void)
 
 	if (ir_about_win)
 		return;
-	ir_about_win = gtk_window_new(GTK_WINDOW_DIALOG);
+	ir_about_win = gtk_window_new(GDK_WINDOW_DIALOG);
 	gtk_signal_connect(GTK_OBJECT(ir_about_win), "destroy", GTK_SIGNAL_FUNC(gtk_widget_destroyed), &ir_about_win);
 	gtk_window_set_title(GTK_WINDOW(ir_about_win), _("About"));
 	gtk_window_set_policy(GTK_WINDOW(ir_about_win), FALSE, FALSE, FALSE);

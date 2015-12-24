@@ -89,7 +89,7 @@ void joy_configure(void)
 
 	if (!joyconf_mainwin)
 	{
-		joyconf_mainwin = gtk_window_new(GTK_WINDOW_DIALOG);
+		joyconf_mainwin = gtk_window_new(GDK_WINDOW_DIALOG);
 		gtk_signal_connect(GTK_OBJECT(joyconf_mainwin), "destroy", GTK_SIGNAL_FUNC(gtk_widget_destroyed), &joyconf_mainwin);
 		gtk_window_set_title(GTK_WINDOW(joyconf_mainwin), _("XMMS Joystick Configuration"));
 		gtk_window_set_policy(GTK_WINDOW(joyconf_mainwin), FALSE, FALSE, FALSE);

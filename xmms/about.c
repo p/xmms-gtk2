@@ -284,7 +284,7 @@ void show_about_window(void)
 	if (about_window)
 		return;
 	
-	about_window = gtk_window_new(GTK_WINDOW_DIALOG);
+	about_window = gtk_window_new(GDK_WINDOW_DIALOG);
 	gtk_window_set_title(GTK_WINDOW(about_window), _("About XMMS"));
 	gtk_window_set_policy(GTK_WINDOW(about_window), FALSE, TRUE, FALSE);
 	gtk_container_set_border_width(GTK_CONTAINER(about_window), 10);

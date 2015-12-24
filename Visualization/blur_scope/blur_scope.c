@@ -153,7 +153,7 @@ static void bscope_init(void)
 		return;
 	bscope_read_config();
 
-	window = gtk_window_new(GTK_WINDOW_DIALOG);
+	window = gtk_window_new(GDK_WINDOW_DIALOG);
 	gtk_window_set_title(GTK_WINDOW(window),_("Blur scope"));
 	gtk_window_set_policy(GTK_WINDOW(window), FALSE, FALSE, FALSE);
 	gtk_widget_realize(window);
